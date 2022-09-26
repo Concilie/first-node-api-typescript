@@ -22,6 +22,19 @@ mongoose
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
+/** Access Control Allow */
+app.use((req, res, next) => {
+    
+    res.header('Access-Control-Allow-Origin', '*'); //Allow all origin domain
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization'); //type using header
+    //pour des requetes autres que GET et POST le navigateur va effectuer une pré-controle en appelant la ressource via OPTIONS
+    if(req.method == 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
+        return res.status(200).json({});
+    }
+    next();
+})
+
 
 /** Routes */
 app.use('/users', userRouter)

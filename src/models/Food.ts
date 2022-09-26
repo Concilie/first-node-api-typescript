@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import mongoose, { Document, Schema } from 'mongoose';
 
 //interface represent document
 export interface IFood {
@@ -11,8 +11,8 @@ export interface IFoodModel extends IFood, Document {}
 //schema of document in mongoDB
 const IFoodSchema: Schema = new Schema(
     {
-        name: { type: String, require: true }
+        name: { type: String, required: true }
     }
 )
 
-export default model<IFoodModel>('Food', IFoodSchema)
+export default mongoose.model<IFoodModel>('Food', IFoodSchema)

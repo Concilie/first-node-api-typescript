@@ -12,11 +12,11 @@ const createUser = (req: Request, res: Response, next: NextFunction) => {
         name,
         email,
         tableNumber
-    })
+    });
 
     return user.save()
             .then((user) => res.status(201).json({ user }))
-            .catch((error) => res.status(500).json({ error }))
+            .catch((error) => res.status(500).json({ error }));
 };
 
 

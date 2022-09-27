@@ -15,9 +15,8 @@ mongoose
     })
     .catch((error) => {
         console.log(error);
-    })
+    });
 
-    console.log("hello")
 
 
 app.use(express.urlencoded({ extended: true}));
@@ -34,17 +33,17 @@ app.use((req, res, next) => {
         return res.status(200).json({});
     }
     next();
-})
+});
 
 
 /** Routes */
-app.use('/users', userRouter)
+app.use('/users', userRouter);
 
 
 /** test */
 app.get('/', (req, res) => {
-    res.send("hello app ")
-})
+    res.send("hello app ");
+});
 
 /** Error handling */
 app.use((req, res) => {
@@ -53,7 +52,7 @@ app.use((req, res) => {
         message: error.message
     });
 
-})
+});
 
 
-http.createServer(app).listen(config.server.port, () => { console.log(`Server Started at port ${config.server.port}`)})
+http.createServer(app).listen(config.server.port, () => { console.log(`Server Started at port ${config.server.port}`);});

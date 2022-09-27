@@ -17,6 +17,7 @@ mongoose
         console.log(error);
     })
 
+    console.log("hello")
 
 
 app.use(express.urlencoded({ extended: true}));
@@ -46,7 +47,7 @@ app.get('/', (req, res) => {
 })
 
 /** Error handling */
-app.use((req, res, next) => {
+app.use((req, res) => {
     const error = new Error('Not found');
     res.status(404).json({
         message: error.message

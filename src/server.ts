@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import { config } from './config/config';
 import userRouter from './routes/User';
 
-const app = express();
+export const app = express();
 
 
 /** Connexion a la bdd */

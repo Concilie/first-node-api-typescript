@@ -20,4 +20,20 @@ describe('user', () => {
                         
         });
     });
+
+
+    describe('POST /users/update/:userId', () => {
+        it('should update user by Id and return user edit in JSON', async () => {
+            const data = {
+                name: "Jest2022",
+                email: "jesta@yopmail.com",
+                tableNumber: 456
+            };
+            await supertest(app)
+                    .post('/users/update/63319e3e478d8b37e214197e')
+                    .send(data)
+                    .set('Accept', 'application/json')
+                    .expect(201);
+        });
+    });
 });

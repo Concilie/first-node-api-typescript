@@ -28,10 +28,10 @@ const updateUser = (req: Request, res: Response) => {
                     .then((user) => {
 
                         if(user) {
-                            //on modifie le schema
+                            //edit schema
                             user.set(req.body);
                             return user.save()
-                                            .then((user) => res.status(201).json({ user }))
+                                            .then((user) => res.status(200).json({ user }))
                                             .catch((error) => res.status(500).json({ error }));
                         } else {
                             return res.status(400).json({message: "User not found"});
@@ -39,9 +39,16 @@ const updateUser = (req: Request, res: Response) => {
                     })
                     .catch((error) => res.status(500).json({ error }));
 
+};
 
+
+const getAllUser = (req: Request, res: Response) => {
+
+    return User.find()
+                    .then((users) => res.status(200).json({ users }))
+                    .catch((error) => res.status(500).json({ error }));
 };
 
 
 
-export default { createUser, updateUser };
+export default { createUser, updateUser, getAllUser };

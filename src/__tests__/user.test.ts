@@ -4,7 +4,7 @@ import { app } from '../server';
 
 
 describe('user', () => {
-    describe('POST /users/create', () => {
+  /*  describe('POST /users/create', () => {
         //supertest return a promise so i add async
         it('should create user and return JSON', async () => {
             const data = {
@@ -33,7 +33,18 @@ describe('user', () => {
                     .post('/users/update/63319e3e478d8b37e214197e')
                     .send(data)
                     .set('Accept', 'application/json')
-                    .expect(201);
+                    .expect(200);
         });
+    });*/
+
+    describe('GET /users/all', () => {
+        it('should return all users', async () => {
+
+            await supertest(app)
+                    .get('/users/all')
+                    .set('Accept', 'application/json')
+                    .expect(200);
+        });
+
     });
 });
